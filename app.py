@@ -1,6 +1,6 @@
 import os
 
-from flask import (Flask, redirect, render_template, request,
+from flask import (Flask, redirect, render_template, request, send_file,
                    send_from_directory, url_for)
 
 app = Flask(__name__)
@@ -8,9 +8,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   print('Request for index page received')
-   return index.html
-#render_template('index.html')
+    print('Request for index page received')
+    html_file_path = 'index.html'
+    return send_file(html_file_path)
+     
+   # return render_template('index.html')
 
 @app.route('/favicon.ico')
 def favicon():
